@@ -15,7 +15,7 @@ def _wpm_net(segments: list, token_count: int) -> tuple:
     speech_seconds = sum(
         s.end - s.start for s in segments if s.confidence >= CONFIDENCE_THRESHOLD
     )
-    if speech_seconds == 0:
+    if speech_seconds < 1e-9:
         return 0.0, 0.0
     return token_count / (speech_seconds / 60), speech_seconds
 

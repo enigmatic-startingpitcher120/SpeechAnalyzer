@@ -6,6 +6,9 @@ def test_speech_rate_returns_result(simple_doc):
     assert result.name == "speech_rate"
     assert "wpm_net" in result.metrics
     assert "wpm_gross" in result.metrics
+    assert "total_tokens" in result.metrics
+    assert "net_speech_seconds" in result.metrics
+    assert "gross_duration_seconds" in result.metrics
 
 
 def test_net_wpm_positive(simple_doc):
