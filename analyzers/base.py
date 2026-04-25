@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
     import spacy.tokens
@@ -20,19 +20,19 @@ class Segment:
 class TranscriptDoc:
     raw_text: str
     clean_text: str
-    segments: list
-    spacy_doc: object
+    segments: list[Segment]
+    spacy_doc: spacy.tokens.Doc
     language: str
-    annotations: dict = field(default_factory=dict)
+    annotations: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
 class AnalyzerResult:
     name: str
-    metrics: dict
-    figures: list
+    metrics: dict[str, Any]
+    figures: list[Any]
     summary: str
-    warnings: list = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
 
 
 class BaseAnalyzer:
