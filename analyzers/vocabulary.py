@@ -33,6 +33,8 @@ def _mattr(lemmas: list, window_size: int = 50) -> float:
 
 
 def _chao1(lemmas: list) -> tuple:
+    if not lemmas:
+        return 0.0, 0, 0, []
     counts = Counter(lemmas)
     s_obs = len(counts)
     f1 = sum(1 for c in counts.values() if c == 1)
