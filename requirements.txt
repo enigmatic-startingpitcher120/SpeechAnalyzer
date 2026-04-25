@@ -1,0 +1,8 @@
+openai-whisper
+spacy
+matplotlib
+wordcloud
+scikit-learn
+numpy
+rich
+pytest
