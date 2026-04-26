@@ -4,7 +4,7 @@ A local CLI tool that transcribes video files and runs linguistic analysis on th
 
 Transcribes audio with [OpenAI Whisper](https://github.com/openai/whisper), processes the transcript with [spaCy](https://spacy.io/), runs a suite of linguistic analyzers, and exports structured reports, metrics, and charts.
 
----
+https://github.com/user-attachments/assets/f73a3257-e14d-413a-b119-abc3be82068e
 
 ## What it analyzes
 
